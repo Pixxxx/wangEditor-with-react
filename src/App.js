@@ -7,6 +7,7 @@ function App() {
   const [content, setContent] = useState('')
 
   useEffect(() => {
+    // 注：class写法需要在componentDidMount 创建编辑器
     editor = new wangeditor("#wangeditor")
 
     editor.config.onchange = (newHtml) => {
@@ -14,6 +15,11 @@ function App() {
     }
     /**一定要创建 */
     editor.create()
+
+    return () => {
+      // 组件销毁时销毁编辑器  注：class写法需要在componentWillUnmount中调用
+      editor.destroy()
+    }
   }, [])
 
   // 获取html方法1
@@ -31,11 +37,6 @@ function App() {
     alert(editor.txt.text())
   }
 
-  // 销毁编辑器
-  function destroy() {
-    editor.destroy()
-  }
-
   return (
     <div>
       <div id="wangeditor"></div>
@@ -43,7 +44,6 @@ function App() {
       <button onClick={getHtml}>获取html</button>
       <button onClick={getHtml1}>获取html1</button>
       <button onClick={getText}>获取text</button>
-      <button onClick={destroy}>销毁编辑器</button>
     </div>
   );
 }
