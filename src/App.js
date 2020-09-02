@@ -31,6 +31,11 @@ function App() {
     alert(editor.txt.text())
   }
 
+  // 销毁编辑器
+  function destroy() {
+    editor.destroy()
+  }
+
   return (
     <div>
       <div id="wangeditor"></div>
@@ -38,6 +43,7 @@ function App() {
       <button onClick={getHtml}>获取html</button>
       <button onClick={getHtml1}>获取html1</button>
       <button onClick={getText}>获取text</button>
+      <button onClick={destroy}>销毁编辑器</button>
     </div>
   );
 }
