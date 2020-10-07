@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import wangeditor from '@wangeditor-team/we-next'
+import E from 'wangeditor'
 
 let editor = null
 function App() {
@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     // 注：class写法需要在componentDidMount 创建编辑器
-    editor = new wangeditor("#wangeditor")
+    editor = new E("#div1")
 
     editor.config.onchange = (newHtml) => {
       setContent(newHtml)
@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div>
-      <div id="wangeditor"></div>
+      <div id="div1"></div>
 
       <button onClick={getHtml}>获取html</button>
       <button onClick={getHtml1}>获取html1</button>
